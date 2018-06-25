@@ -13,7 +13,7 @@ export const uiConfiguration = () => {
 }
 
 export const apiDocs = (params) => {
-  return axios.get('/v2/api-docs', {params: params})
+  return axios.get('https://petstore.swagger.io/v2/swagger.json', {params: params})
 }
 
 export const test = (method, url, params) => {

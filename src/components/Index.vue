@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { securityConfiguration, uiConfiguration } from '../api'
+// import { securityConfiguration, uiConfiguration } from '../api'
 export default {
   data () {
     return {
@@ -22,20 +22,20 @@ export default {
     }
   },
   methods: {
-    getSecurityConfig () {
-      securityConfiguration().then(data => {
-        this.security = data.data
-      })
-    },
-    getUiConfig () {
-      uiConfiguration().then(data => {
-        this.ui = data.data
-      })
-    }
+    // getSecurityConfig () {
+    //   securityConfiguration().then(data => {
+    //     this.security = data.data
+    //   })
+    // },
+    // getUiConfig () {
+    //   uiConfiguration().then(data => {
+    //     this.ui = data.data
+    //   })
+    // }
   },
   created () {
-    this.getSecurityConfig()
-    this.getUiConfig()
+    // this.getSecurityConfig()
+    // this.getUiConfig()
   },
   mounted () {
   }

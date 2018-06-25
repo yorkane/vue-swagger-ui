@@ -37,9 +37,10 @@ export default {
       addApiDocs: 'addApiDocs'
     }),
     getResources () {
-      resources().then(data => {
-        this.groups = data.data
-      })
+      this.getApiDocs()
+      // resources().then(data => {
+      //   this.groups = data.data
+      // })
     },
     change (value) {
       this.getApiDocs({group: value})
@@ -145,6 +146,7 @@ export default {
   },
   created () {
     this.getResources()
+
   },
   mounted () {
   }
