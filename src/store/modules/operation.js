@@ -1,7 +1,8 @@
 import * as types from '../mutation-types'
 
 const state = {
-  apiDocs: {}
+  apiDocs: {},
+  baseUrl: ''
 }
 
 const getters = {
@@ -22,6 +23,7 @@ const getters = {
     }
     return opt
   },
+  getBaseUrl: (state) => state.baseUrl,
   apiDocs: (state) => state.apiDocs,
   tags: (state) => {
     return state.apiDocs['tags']
@@ -38,12 +40,10 @@ const getters = {
   getDefinitions: (state) => state.apiDocs['definitions']
 }
 
-const actions = {
-
-}
+const actions = {}
 
 const mutations = {
-  [types.ADD_API_DOCS] (state, apiDocs) {
+  [types.ADD_API_DOCS](state, apiDocs) {
     state.apiDocs = apiDocs
   }
 }

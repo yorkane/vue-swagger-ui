@@ -3,6 +3,9 @@
     <h3>测试</h3>
     <div>
       <el-form ref="form">
+        <el-form-item>
+          <el-button type="primary" @click="onSubmit">测一测</el-button>
+        </el-form-item>
         <div v-if="headerParameters.length > 0">
           <el-form-item size="mini"  v-for="param in headerParameters"
                         :label="param.name"
@@ -35,9 +38,6 @@
             <el-input type="textarea" :value="format(param)" autosize></el-input>
           </el-form-item>
         </div>
-        <el-form-item>
-          <el-button type="primary" @click="onSubmit">测一测</el-button>
-        </el-form-item>
       </el-form>
       <p>{{format(testResult)}}</p>
     </div>
@@ -47,6 +47,7 @@
 <script>
 import { formatObject } from '../util'
 import { test } from '../api'
+import { mapGetters } from 'vuex'
 export default {
   props: {
     operation: Object
@@ -65,7 +66,7 @@ export default {
       console.log('headerParam', this.headerParam)
       console.log('queryParam', this.queryParam)
       console.log('bodyParam', this.bodyParam)
-      test(this.operation.method, this.operation.path, {}).then(data => {
+      test(this.operation.method, this.baseUrl + this.operation.path, {}).then(data => {
         this.testResult = data.data
       })
     },
@@ -75,6 +76,9 @@ export default {
     }
   },
   computed: {
+    ...mapGetters({
+      baseUrl: 'getBaseUrl'
+    }),
     headerParameters: {
       get () {
         if (this.operation && this.operation['parameters']) {

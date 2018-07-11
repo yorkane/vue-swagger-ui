@@ -12,8 +12,8 @@ export const uiConfiguration = () => {
   return axios.get('/swagger-resources/configuration/ui', {params: {}})
 }
 
-export const apiDocs = (params) => {
-  return axios.get('https://petstore.swagger.io/v2/swagger.json', {params: params})
+export const apiDocs = (params, url) => {
+  return axios.get(url || 'http://192.168.56.100/app/v1/api/approot.model.sys_organization', {params: params})
 }
 
 export const test = (method, url, params) => {

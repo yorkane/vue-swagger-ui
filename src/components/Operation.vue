@@ -4,13 +4,18 @@
       <h3>{{operation.summary}}</h3>
       <p>{{operation.description}}</p>
     </div>
-    <div>
-      <request-path :method="operation.method" :path="operation.path"></request-path>
-      <request-parameter :parameters="parameters" :consumes="operation.consumes"></request-parameter>
-      <response-parameter :parameters="responses" :produces="operation.produces"></response-parameter>
-      <test :operation="operation"></test>
+  <el-tabs>
+    <el-tab-pane label="Info" name="first">
+          <div slot="header">
+            {{operation.summary}}<span>{{operation.description}}</span>
+          </div>
+          <request-path :method="operation.method" :path="operation.path"></request-path>
+          <request-parameter :parameters="parameters" :consumes="operation.consumes"></request-parameter>
       <!--<definition v-for="(definition, key) in definitions" :definition="definition" :name="key" :key="key"></definition>-->
-    </div>
+  </el-tab-pane>
+    <el-tab-pane label="response" name="fourth"><response-parameter :parameters="responses" :produces="operation.produces"></response-parameter></el-tab-pane>
+    <el-tab-pane label="Test" name="third"><test :operation="operation"></test></el-tab-pane>
+  </el-tabs>
   </el-card>
 </template>
 
